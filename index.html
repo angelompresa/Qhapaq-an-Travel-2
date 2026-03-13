@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qhapaq Ñan | Agencia de Viajes Cusco - Caminos del Imperio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #8B4513;
+            --color-secondary: #D2691E;
+            --color-accent: #FFD700;
+            --color-dark: #2C1810;
+            --color-light: #F5F5DC;
+            --color-terracota: #E2725B;
+            --color-andean: #4A6741;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(44,24,16,0.7), rgba(139,69,19,0.5)), 
+                        url('https://kimi-web-img.moonshot.cn/img/www.boletomachupicchu.com/0eec339c56f0ac378b23464cfc86132809ca6c13.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--color-accent), #FFA500);
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: var(--color-accent);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0.3) 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--color-light), white);
+            border-radius: 15px;
+            border: 2px solid rgba(139,69,19,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Mission/Vision Cards */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mv-card i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        /* Packages Section */
+        .packages {
+            background: linear-gradient(to bottom, var(--color-light), white);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-accent);
+            color: var(--color-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .package-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+
+        .package-content {
+            padding: 2rem;
+        }
+
+        .package-content h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .package-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .package-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .price span {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .book-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .book-btn:hover {
+            background: var(--color-secondary);
+            transform: scale(1.05);
+        }
+
+        /* Promotions Section */
+        .promotions {
+            background: linear-gradient(135deg, var(--color-dark), #1a0f0a);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promotions::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .promotions .section-title {
+            color: var(--color-accent);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .promo-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        .promo-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .promo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-accent), #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-dark);
+        }
+
+        .promo-card h3 {
+            color: var(--color-accent);
+            font-size: 1.5rem;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        .promo-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .promo-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .promo-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .promo-code {
+            background: rgba(255,215,0,0.2);
+            border: 2px dashed var(--color-accent);
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            letter-spacing: 2px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-top: 0.2rem;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, var(--color-light), white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139,69,19,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--color-accent);
+            color: var(--color-dark);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mv-grid,
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            z-index: 999;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>Qhapaq Ñan</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#paquetes">Paquetes</a></li>
+                <li><a href="#promociones">Promociones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Qhapaq Ñan Travel</h1>
+            <p>Siguiendo los Caminos del Imperio Inca</p>
+            <a href="#paquetes" class="cta-button">Explorar Aventuras</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.salkantaytrekking.com/c8417f17bf64aa32c149fc45afc42b5c9be9fe6d.jpg" alt="Plaza de Armas Cusco">
+            </div>
+            <div class="about-content">
+                <h2>¿Quiénes Somos?</h2>
+                <p>
+                    <span class="highlight">Qhapaq Ñan Travel Agency</span> nace del profundo respeto por el gran sistema vial del Imperio Inca. Con un año de experiencia, nos hemos dedicado a crear experiencias auténticas que conectan a los viajeros con la esencia ancestral de los Andes.
+                </p>
+                <p>
+                    Nuestro nombre honra el <strong>Qhapaq Ñan</strong> (Camino Real), la extensa red de caminos que unió al Tahuantinsuyo y que hoy es Patrimonio Cultural de la Humanidad. Como esta ancestral ruta, nosotros conectamos culturas, historias y personas.
+                </p>
+                <p>
+                    Somos un equipo de jóvenes profesionales cusqueños apasionados por nuestra tierra, comprometidos con el turismo sostenible y la preservación de nuestras tradiciones vivas.
+                </p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1+</span>
+                        <span class="stat-label">Año de Experiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Viajeros Felices</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Destinos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mv-grid">
+            <div class="mv-card">
+                <i class="fas fa-compass"></i>
+                <h3>Nuestra Misión</h3>
+                <p>Ofrecer experiencias turísticas transformadoras que permitan a nuestros visitantes conectar profundamente con la cultura viva de Cusco, promoviendo el turismo responsable y generando beneficios directos para las comunidades locales.</p>
+            </div>
+            <div class="mv-card">
+                <i class="fas fa-eye"></i>
+                <h3>Nuestra Visión</h3>
+                <p>Ser reconocidos como la agencia de viajes líder en turismo experiencial en el sur del Perú, destacando por nuestra autenticidad, compromiso con la sostenibilidad y la calidad humana de nuestros servicios.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="paquetes">
+        <h2 class="section-title">Paquetes Turísticos</h2>
+        
+        <div class="packages-grid">
+            <!-- Machu Picchu -->
+            <div class="package-card">
+                <div class="package-badge">Más Popular</div>
+                <div class="package-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/andeangreattreks.com/8ce25e064c1cc04550c6730b7b22a654d0018789.jpg" alt="Machu Picchu">
+                </div>
+                <div class="package-content">
+                    <h3>Machu Picchu Full Day</h3>
+                    <div class="package-meta">
+                        <span><i class="far fa-clock"></i> 1 Día</span>
+                        <span><i class="fas fa-user-friends"></i> Máx 15</span>
+                        <span><i class="fas fa-signal"></i> Moderado</span>
+                    </div>
+                    <p class="package-description">
+                        Visita la maravilla del mundo moderno. Incluye transporte desde Cusco, tren ida y vuelta, bus de subida, ingreso a la ciudadela y guía profesional bilingüe.
+                    </p>
+                    <div class="package-price">
+                        <div class="price">$280 <span>USD/persona</span></div>
+                        <a href="#contacto" class="book-btn">Reservar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Valle Sagrado -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.boletomachupicchu.com/c2d9a68a0d7d7fba8992c5ce7e2bff6ee7357bec.jpg" alt="Valle Sagrado">
+                </div>
+                <div class="package-content">
+                    <h3>Valle Sagrado VIP</h3>
+                    <div class="package-meta">
+                        <span><i class="far fa-clock"></i> 1 Día</span>
+                        <span><i class="fas fa-user-friends"></i> Máx 12</span>
+                        <span><i class="fas fa-signal"></i> Fácil</span>
+                    </div>
+                    <p class="package-description">
+                        Recorre Pisac, Ollantaytambo y Chinchero. Mercados artesanales, ruinas impresionantes y almuerzo buffet en restaurante turístico incluido.
+                    </p>
+                    <div class="package-price">
+                        <div class="price">$65 <span>USD/persona</span></div>
+                        <a href="#contacto" class="book-btn">Reservar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Montaña 7 Colores -->
+            <div class="package-card">
+                <div class="package-badge">Tendencia</div>
+                <div class="package-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.perurail.com/2e6105cc50996848e82a3e20c7417604a4e8361e.jpg" alt="Montaña de 7 Colores">
+                </div>
+                <div class="package-content">
+                    <h3>Vinicunca - Montaña 7 Colores</h3>
+                    <div class="package-meta">
+                        <span><i class="far fa-clock"></i> 1 Día</span>
+                        <span><i class="fas fa-user-friends"></i> Máx 10</span>
+                        <span><i class="fas fa-signal"></i> Difícil</span>
+                    </div>
+                    <p class="package-description">
+                        Trekking a la famosa montaña arcoíris. Desayuno y almuerzo incluidos. Opción de ir a caballo (costo adicional). Una experiencia única a 5,200 msnm.
+                    </p>
+                    <div class="package-price">
+                        <div class="price">$45 <span>USD/persona</span></div>
+                        <a href="#contacto" class="book-btn">Reservar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laguna Humantay -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.perurail.com/11bffd3d499960966983e33cc1ee40b299359eec.jpg" alt="Laguna Humantay">
+                </div>
+                <div class="package-content">
+                    <h3>Laguna Humantay</h3>
+                    <div class="package-meta">
+                        <span><i class="far fa-clock"></i> 1 Día</span>
+                        <span><i class="fas fa-user-friends"></i> Máx 12</span>
+                        <span><i class="fas fa-signal"></i> Moderado</span>
+                    </div>
+                    <p class="package-description">
+                        Caminata a la espectacular laguna turquesa al pie del nevado Salkantay. Desayuno en Mollepata y almuerzo incluidos. Ideal para amantes de la fotografía.
+                    </p>
+                    <div class="package-price">
+                        <div class="price">$40 <span>USD/persona</span></div>
+                        <a href="#contacto" class="book-btn">Reservar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maras Moray -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.boletomachupicchu.com/4f5924a086f2931109f4b157fc69e7801f15b3d4.jpg" alt="Salineras de Maras">
+                </div>
+                <div class="package-content">
+                    <h3>Maras, Moray & Salineras</h3>
+                    <div class="package-meta">
+                        <span><i class="far fa-clock"></i> Medio Día</span>
+                        <span><i class="fas fa-user-friends"></i> Máx 15</span>
+                        <span><i class="fas fa-signal"></i> Fácil</span>
+                    </div>
+                    <p class="package-description">
+                        Tour a las terrazas circulares de Moray y las milenarias salineras de Maras. Incluye transporte privado y guía especializado en agricultura inca.
+                    </p>
+                    <div class="package-price">
+                        <div class="price">$35 <span>USD/persona</span></div>
+                        <a href="#contacto" class="book-btn">Reservar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salkantay Trek -->
+            <div class="package-card">
+                <div class="package-badge">Aventura</div>
+                <div class="package-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.incatrailmachu.com/37108424d2ede3741620615368e6ab545a63e1c4.jpg" alt="Salkantay Trek">
+                </div>
+                <div class="package-content">
+                    <h3>Salkantay Trek 5D/4N</h3>
+                    <div class="package-meta">
+                        <span><i class="far fa-clock"></i> 5 Días</span>
+                        <span><i class="fas fa-user-friends"></i> Máx 8</span>
+                        <span><i class="fas fa-signal"></i> Difícil</span>
+                    </div>
+                    <p class="package-description">
+                        La alternativa al Camino Inca. Cruza el paso de Salkantay (4,650 msnm), visita Machu Picchu. Todo incluido: camping, comidas, guías y equipos.
+                    </p>
+                    <div class="package-price">
+                        <div class="price">$450 <span>USD/persona</span></div>
+                        <a href="#contacto" class="book-btn">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="promotions" id="promociones">
+        <h2 class="section-title">Promociones Especiales</h2>
+        
+        <div class="promo-grid">
+            <!-- Extranjeros -->
+            <div class="promo-card">
+                <div class="discount-badge">-20% OFF</div>
+                <div class="promo-header">
+                    <div class="promo-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Turistas Extranjeros</h3>
+                </div>
+                <p>¡Bienvenidos al ombligo del mundo! Disfruta de un descuento especial en nuestros paquetes combinados.</p>
+                <ul class="promo-features">
+                    <li>Valle Sagrado + Machu Picchu: <strong>$320</strong> (antes $380)</li>
+                    <li>City Tour + 7 Colores: <strong>$75</strong> (antes $90)</li>
+                    <li>Traslados gratuitos del aeropuerto</li>
+                    <li>Botella de agua reutilizable de regalo</li>
+                    <li>Guía fotográfico profesional incluido</li>
+                </ul>
+                <div class="promo-code">
+                    Código: QHAPAQ20
+                </div>
+            </div>
+
+            <!-- Nacionales -->
+            <div class="promo-card">
+                <div class="discount-badge">-30% OFF</div>
+                <div class="promo-header">
+                    <div class="promo-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3>Turistas Nacionales</h3>
+                </div>
+                <p>¡Conoce tu país! Promoción especial para peruanos con DNI. Precios en soles para tu comodidad.</p>
+                <ul class="promo-features">
+                    <li>Machu Picchu Full Day: <strong>S/450</strong> (antes S/650)</li>
+                    <li>7 Colores: <strong>S/120</strong> (antes S/170)</li>
+                    <li>Valle Sagrado: <strong>S/90</strong> (antes S/130)</li>
+                    <li>Descuento adicional en grupos de 4+ personas</li>
+                    <li>Posibilidad de pago en cuotas</li>
+                </ul>
+                <div class="promo-code">
+                    Código: PERUANO30
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p style="margin-bottom: 2rem; line-height: 1.8; color: #555;">
+                    Estamos ubicados en el corazón de Cusco, listos para ayudarte a planificar la aventura de tu vida. ¡Escríbenos!
+                </p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Dirección</strong>
+                        <p>Calle Plateros 324, Oficina 205<br>Centro Histórico, Cusco - Perú</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <p>+51 84 123456<br>+1 (941) 301-1716 (WhatsApp)</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <p>info@qhapaqnantravel.com<br>reservas@qhapaqnantravel.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="far fa-clock"></i>
+                    <div>
+                        <strong>Horario de Atención</strong>
+                        <p>Lunes a Sábado: 8:00 am - 8:00 pm<br>Domingos: 9:00 am - 2:00 pm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paquete">Paquete de interés</label>
+                        <select id="paquete" name="paquete">
+                            <option value="">Selecciona un paquete</option>
+                            <option value="machu-picchu">Machu Picchu Full Day</option>
+                            <option value="valle-sagrado">Valle Sagrado VIP</option>
+                            <option value="vinicunca">Montaña 7 Colores</option>
+                            <option value="humantay">Laguna Humantay</option>
+                            <option value="maras">Maras, Moray & Salineras</option>
+                            <option value="salkantay">Salkantay Trek 5D/4N</option>
+                            <option value="personalizado">Tour Personalizado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Cuántas personas? ¿Qué fechas? ¿Alguna pregunta especial?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Enviar Consulta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h2 style="color: var(--color-accent); margin-bottom: 1rem;">Qhapaq Ñan Travel Agency</h2>
+            <p style="margin-bottom: 2rem;">"Caminos que conectan el pasado con tu presente"</p>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/people/Qhapaq-%C3%91an-Travel/61583817196127/?mibextid=wwXIfr&rdid=bT3Qg2REeB4xOta0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CZ95ftNYP%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.tiktok.com/@qhapaqnantravel" target="_blank" rel="noopener" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://wa.me/19413017116" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Qhapaq Ñan Travel Agency. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">RUC: 20456789123 | Licencia de Turismo: CD-0456-2023</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/19413017116" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
